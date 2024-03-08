@@ -1,4 +1,6 @@
 import { useState } from 'react';
+import Login from './Components/Login';
+import ScoreBoard from './Components/Scoreboard';
 
 function Square({ value, onSquareClick }) {
   return (
@@ -48,6 +50,7 @@ function Board({ xIsNext, squares, onPlay }) {
         <Square value={squares[7]} onSquareClick={() => handleClick(7)} />
         <Square value={squares[8]} onSquareClick={() => handleClick(8)} />
       </div>
+      <Login />
     </>
   );
 }
@@ -77,7 +80,7 @@ export default function Game() {
     }
     return (
       <li key={move}>
-        <button onClick={() => jumpTo(move)}>{description}</button>
+        <button className='status-button' onClick={() => jumpTo(move)}>{description}</button>
       </li>
     );
   });
@@ -88,7 +91,10 @@ export default function Game() {
         <Board xIsNext={xIsNext} squares={currentSquares} onPlay={handlePlay} />
       </div>
       <div className="game-info">
-        <ol>{moves}</ol>
+        <ol className='moves'>{moves}</ol>
+      </div>
+      <div className="scoreboard">
+        <ScoreBoard />
       </div>
     </div>
   );

@@ -60,15 +60,67 @@ body {
     background: #fff;
     border: 1px solid #999;
     float: left;
-    font-size: 24px;
+    font-size: 100px;
     font-weight: bold;
     line-height: 34px;
-    height: 34px;
+    height: 128px;
     margin-right: -1px;
     margin-top: -1px;
     padding: 0;
     text-align: center;
-    width: 34px;
+    width: 128px;
+}
+
+.square:hover {
+    outline: none;
+    background-color: deepskyblue;
+}
+
+.status-button {
+    background-color: #4CAF50;
+    border: none;
+    color: white;
+    padding: 8px 16px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 0px 2px;
+    cursor: pointer;
+    min-width: 200px;
+}
+
+.status-button:hover {
+    background-color: #45a049;
+}
+
+.moves {
+    list-style: none;
+}
+
+.login_button {
+    background-color: #4CAF50;
+    border: none;
+    color: white;
+    padding: 8px 16px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 0px 2px;
+    cursor: pointer;
+    min-width: 200px;
+}
+
+.login_button:hover {
+    background-color: #45a049;
+}
+
+.login_status {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    font-size: 20px;
+    font-weight: bold;
 }
 
 .board-row:after {
@@ -88,4 +140,12 @@ body {
 
 .game-info {
     margin-left: 20px;
+}
+
+.scoreboard {
+    margin-top: 16px;
+    margin-bottom: 10px;
+    margin-left: 20px;
+    font-size: 20px;
+    font-weight: bold;
 }
