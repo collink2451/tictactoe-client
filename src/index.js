@@ -12,9 +12,7 @@ root.render(
   <StrictMode>
     <BrowserRouter>
       <Routes>
-        {/* Route for the specific endpoint */}
         <Route path="/auth" element={<Callback />} />
-        {/* Default route for other endpoints */}
         <Route path="/" element={<App />} />
       </Routes>
     </BrowserRouter>

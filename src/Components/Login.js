@@ -30,7 +30,7 @@ const Login = () => {
     }, []);
 
     const handleLogin = () => {
-        window.location.href = process.env.REACT_APP_API_URL + '/api/auth';
+        window.location.href = process.env.REACT_APP_API_URL + '/api/auth?redirectUrl=' + window.location.origin + '/auth';
     };
 
     async function fetchGitHubUsername(accessToken) {
