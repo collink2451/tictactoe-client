@@ -40,7 +40,7 @@ const Login = () => {
         };
 
         try {
-            const response = await axios.get(process.env.GITHUB_API_URL + '/user', { headers });
+            const response = await axios.get(process.env.REACT_APP_GITHUB_API_URL + '/user', { headers });
             return response.data.login;
         } catch (error) {
             // Handle errors
