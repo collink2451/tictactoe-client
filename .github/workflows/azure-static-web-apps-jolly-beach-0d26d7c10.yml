@@ -15,7 +15,7 @@ jobs:
     runs-on: ubuntu-latest
     name: Build and Deploy Job
     env:
-      REACT_APP_API_URL: "https://lewis-tac-toe.azurewebsites.net"
+      REACT_APP_API_URL: "https://lewis-tac-toe.azurewebsites.net/api"
       REACT_APP_GITHUB_API_URL: "https://api.github.com"
     steps:
       - uses: actions/checkout@v3
