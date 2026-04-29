@@ -7,13 +7,11 @@ A React tic-tac-toe game with GitHub OAuth login and a persistent leaderboard. T
 - Classic 3×3 tic-tac-toe with move history (jump to any previous move)
 - GitHub OAuth login
 - Leaderboard — win counts are saved per GitHub user and displayed alongside the board
-- Hosted on Azure Static Web Apps
 
 ## Tech Stack
 
 - **Framework:** React (JavaScript)
 - **Auth:** GitHub OAuth (via [Lewis-Tac-Toe-Server](../Lewis-Tac-Toe-Server))
-- **Deployment:** Azure Static Web Apps
 
 ## Setup
 
@@ -50,4 +48,4 @@ The app will be available at `http://localhost:3000`.
 
 ## Deployment
 
-Deploy to **Azure Static Web Apps** using the included `staticwebapp.config.json`.
+Run `npm run build` and serve the `build/` directory with any static hosting provider or web server.
