@@ -1,72 +1,43 @@
-import axios from 'axios';
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 
 const Login = () => {
-    const [token, setToken] = useState('');
-    const [loggedIn, setLoggedIn] = useState(false);
-    const [username, setUsername] = useState('');
-
-    useEffect(() => {
-        const fetchUserData = async () => {
-            // Check if authentication token exists when component mounts
-            const token = localStorage.getItem('accessToken');
-            setToken(token);
-            if (token) {
-                setLoggedIn(true);
-                try {
-                    const username = await fetchGitHubUsername(token);
-                    setUsername(username);
-                } catch (error) {
-                    console.error('Error fetching GitHub username:', error);
-                    setUsername('');
-                }
-            } else {
-                setLoggedIn(false);
-                setUsername('');
-            }
-        };
-
-        fetchUserData();
-    }, []);
+    const [loggedIn, setLoggedIn] = useState(!!localStorage.getItem('username'));
+    const [name, setName] = useState(localStorage.getItem('username') || '');
+    const [input, setInput] = useState('');
 
     const handleLogin = () => {
-        window.location.href = process.env.REACT_APP_API_URL + '/auth?redirectUrl=' + window.location.origin + '/auth';
+        if (!input.trim()) return;
+        const trimmed = input.trim();
+        localStorage.setItem('username', trimmed);
+        setName(trimmed);
+        setLoggedIn(true);
+        setInput('');
     };
 
-    async function fetchGitHubUsername(accessToken) {
-        // Set up the request headers with the access token
-        const headers = {
-            Authorization: `Bearer ${accessToken}`
-        };
-
-        try {
-            const response = await axios.get(process.env.REACT_APP_GITHUB_API_URL + '/user', { headers });
-            return response.data.login;
-        } catch (error) {
-            // Handle errors
-            console.error('Error fetching GitHub username:', error);
-            throw error;
-        }
-    }
-
     const handleLogout = () => {
-        // Clear authentication token from browser storage
-        localStorage.removeItem('accessToken');
-        // Update authentication state
+        localStorage.removeItem('username');
         setLoggedIn(false);
+        setName('');
     };
 
     return (
         <div style={{display: 'inline-block'}}>
             {loggedIn ? (
                 <div>
-                    <p className='login_status'>Welcome {username}!</p>
+                    <p className='login_status'>Welcome {name}!</p>
                     <button className='login_button' onClick={handleLogout}>Logout</button>
                 </div>
             ) : (
                 <div>
-                    <p className='login_status'>You are not logged in</p>
-                    <button className='login_button' onClick={handleLogin}>Login with GitHub</button>
+                    <p className='login_status'>Enter your name to play</p>
+                    <input
+                        type="text"
+                        value={input}
+                        onChange={(e) => setInput(e.target.value)}
+                        onKeyDown={(e) => e.key === 'Enter' && handleLogin()}
+                        placeholder="Your name"
+                    />
+                    <button className='login_button' onClick={handleLogin}>Play</button>
                 </div>
             )}
         </div>

@@ -2,18 +2,18 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 
 const Login = () => {
-    const [token, setToken] = useState('');
+    const [username, setUsername] = useState('');
     const [scoreboard, setScoreboard] = useState([]);
 
     useEffect(() => {
         const fetchScoreBoard = async () => {
-            const token = localStorage.getItem('accessToken');
-            setToken(token);
+            const username = localStorage.getItem('username');
+            setUsername(username);
 
             // Set authorization headers
             axios({
                 method: 'get',
-                url: process.env.REACT_APP_API_URL + '/scoreboard',
+                url: process.env.REACT_APP_API_URL + '/api/scoreboard',
             }).then((response) => {
                 console.log('API response:', response);
                 response.data.sort((a, b) => b.score - a.score);
@@ -28,14 +28,12 @@ const Login = () => {
 
     const addScore = async () => {
 
-        if (token) {
-            // Set authorization headers
+        if (username) {
             axios({
                 method: 'post',
-                url: process.env.REACT_APP_API_URL + '/scoreboard',
-                headers: {},
+                url: process.env.REACT_APP_API_URL + '/api/scoreboard',
                 data: {
-                    accessToken: token,
+                    username,
                 }
             }).then((response) => {
                 console.log('API response:', response);

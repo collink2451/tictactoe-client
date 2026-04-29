@@ -1,17 +1,17 @@
 # Tic-Tac-Toe Client
 
-A React tic-tac-toe game with GitHub OAuth login and a persistent leaderboard. The game logic is built from the official React tutorial and extended with authentication and score tracking via the [tictactoe-server](../tictactoe-server) backend.
+A React tic-tac-toe game with a persistent leaderboard. The game logic is built from the official React tutorial and extended with a username-based login and score tracking via the [tictactoe-server](../tictactoe-server) backend.
 
 ## Features
 
 - Classic 3×3 tic-tac-toe with move history (jump to any previous move)
-- GitHub OAuth login
-- Leaderboard — win counts are saved per GitHub user and displayed alongside the board
+- Name-based login — enter a username to start playing
+- Leaderboard — win counts are saved per username and displayed alongside the board
 
 ## Tech Stack
 
 - **Framework:** React (JavaScript)
-- **Auth:** GitHub OAuth (via [tictactoe-server](../tictactoe-server))
+- **Backend:** [tictactoe-server](../tictactoe-server)
 
 ## Setup
 
@@ -36,7 +36,7 @@ npm start
 
 The app will be available at `http://localhost:3000`.
 
-> The backend URL is configured in the source — update it to point to your local tictactoe-server if needed.
+> The backend URL is configured via `REACT_APP_API_URL` — set it in a `.env` file if running the backend on a different host.
 
 ## Scripts
 
