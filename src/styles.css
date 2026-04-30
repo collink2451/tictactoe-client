@@ -1,49 +1,14 @@
-* {
-    box-sizing: border-box;
-}
-
-body {
-    font-family: sans-serif;
-    margin: 20px;
-    padding: 0;
-}
-
-h1 {
-    margin-top: 0;
-    font-size: 22px;
-}
-
-h2 {
-    margin-top: 0;
-    font-size: 20px;
-}
-
-h3 {
-    margin-top: 0;
-    font-size: 18px;
-}
-
-h4 {
-    margin-top: 0;
-    font-size: 16px;
-}
-
-h5 {
-    margin-top: 0;
-    font-size: 14px;
-}
-
-h6 {
-    margin-top: 0;
-    font-size: 12px;
-}
-
-code {
-    font-size: 1.2em;
-}
-
-ul {
-    padding-inline-start: 20px;
+:root {
+    --bg-primary: #0d0d1a;
+    --bg-panel: #1a1a2e;
+    --bg-card: #16213e;
+    --color-x: #00d4ff;
+    --color-o: #ff6b6b;
+    --color-accent: #7c3aed;
+    --color-accent-light: #a78bfa;
+    --color-text: #e2e8f0;
+    --color-text-muted: #94a3b8;
+    --border-color: #2a2a4a;
 }
 
 * {
@@ -51,101 +16,293 @@ ul {
 }
 
 body {
-    font-family: sans-serif;
-    margin: 20px;
-    padding: 0;
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    background: radial-gradient(ellipse at top left, #1a0a2e 0%, #0d0d1a 50%, #0a1628 100%);
+    min-height: 100vh;
+    margin: 0;
+    padding: 32px 24px;
+    color: var(--color-text);
 }
 
-.square {
-    background: #fff;
-    border: 1px solid #999;
-    float: left;
-    font-size: 100px;
-    font-weight: bold;
-    line-height: 34px;
-    height: 128px;
-    margin-right: -1px;
-    margin-top: -1px;
-    padding: 0;
+h1 { margin-top: 0; font-size: 2rem; font-weight: 700; }
+h2 { margin-top: 0; font-size: 1.4rem; font-weight: 600; }
+h3 { margin-top: 0; font-size: 1.2rem; }
+h4 { margin-top: 0; font-size: 1rem; }
+h5 { margin-top: 0; font-size: 0.9rem; }
+h6 { margin-top: 0; font-size: 0.8rem; }
+
+code { font-size: 1.2em; }
+
+ul { padding-inline-start: 20px; }
+
+/* ===== PAGE TITLE ===== */
+
+.page-title {
     text-align: center;
-    width: 128px;
+    margin-bottom: 40px;
 }
 
-.square:hover {
-    outline: none;
-    background-color: deepskyblue;
+.page-title h1 {
+    font-size: 3rem;
+    font-weight: 800;
+    letter-spacing: -1px;
+    background: linear-gradient(135deg, var(--color-x) 0%, var(--color-accent-light) 50%, var(--color-o) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin: 0;
 }
 
-.status-button {
-    background-color: #4CAF50;
-    border: none;
-    color: white;
-    padding: 8px 16px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    margin: 0px 2px;
-    cursor: pointer;
-    min-width: 200px;
-}
-
-.status-button:hover {
-    background-color: #45a049;
-}
-
-.moves {
-    list-style: none;
-}
-
-.login_button {
-    background-color: #4CAF50;
-    border: none;
-    color: white;
-    padding: 8px 16px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    margin: 0px 2px;
-    cursor: pointer;
-    min-width: 200px;
-}
-
-.login_button:hover {
-    background-color: #45a049;
-}
-
-.login_status {
-    margin-top: 10px;
-    margin-bottom: 10px;
-    font-size: 20px;
-    font-weight: bold;
-}
-
-.board-row:after {
-    clear: both;
-    content: '';
-    display: table;
-}
-
-.status {
-    margin-bottom: 10px;
-}
+/* ===== GAME LAYOUT ===== */
 
 .game {
     display: flex;
     flex-direction: row;
+    align-items: flex-start;
+    gap: 32px;
+    max-width: 860px;
+    margin: 0 auto;
+}
+
+.game-board {
+    flex-shrink: 0;
 }
 
 .game-info {
-    margin-left: 20px;
+    flex: 1;
+    min-width: 180px;
+    margin-left: 0;
 }
 
-.scoreboard {
-    margin-top: 16px;
+/* ===== STATUS ===== */
+
+.status {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 16px;
+    color: var(--color-text);
+    padding: 10px 16px;
+    background: var(--bg-panel);
+    border-radius: 8px;
+    border-left: 3px solid var(--color-accent-light);
+    letter-spacing: 0.3px;
+}
+
+/* ===== BOARD ===== */
+
+.board-row {
+    display: flex;
+}
+
+.board-row:after {
+    display: none;
+}
+
+/* ===== SQUARES ===== */
+
+.square {
+    background: var(--bg-panel);
+    border: none;
+    border-right: 2px solid var(--border-color);
+    border-bottom: 2px solid var(--border-color);
+    font-size: 64px;
+    font-weight: 800;
+    height: 110px;
+    width: 110px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background 0.15s ease, transform 0.1s ease;
+    color: var(--color-text);
+    padding: 0;
+    line-height: 1;
+    float: none;
+    margin: 0;
+}
+
+.board-row:last-child .square {
+    border-bottom: none;
+}
+
+.board-row .square:last-child {
+    border-right: none;
+}
+
+.square:hover {
+    background: #252545;
+    outline: none;
+}
+
+.square:focus {
+    outline: none;
+}
+
+.square[data-value="X"] {
+    color: var(--color-x);
+    text-shadow: 0 0 16px rgba(0, 212, 255, 0.55);
+}
+
+.square[data-value="O"] {
+    color: var(--color-o);
+    text-shadow: 0 0 16px rgba(255, 107, 107, 0.55);
+}
+
+/* Board outer frame */
+.board-frame {
+    border: 2px solid var(--border-color);
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(124, 58, 237, 0.15);
+}
+
+/* ===== MOVE HISTORY BUTTONS ===== */
+
+.moves {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.moves li {
+    padding: 0;
+}
+
+.status-button {
+    background: linear-gradient(135deg, #2d2d5e, #3a2a6e);
+    border: 1px solid #4a3a7e;
+    color: var(--color-text);
+    padding: 8px 14px;
+    text-align: left;
+    display: block;
+    font-size: 13px;
+    font-weight: 500;
+    cursor: pointer;
+    width: 100%;
+    border-radius: 8px;
+    transition: background 0.15s ease, border-color 0.15s ease, transform 0.1s ease;
+    min-width: 0;
+}
+
+.status-button:hover {
+    background: linear-gradient(135deg, #3a3a7e, #4f3a8e);
+    border-color: var(--color-accent-light);
+    transform: translateX(2px);
+}
+
+/* Section label for move history */
+.game-info-label {
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--color-text-muted);
     margin-bottom: 10px;
-    margin-left: 20px;
-    font-size: 20px;
-    font-weight: bold;
+}
+
+/* ===== LOGIN ===== */
+
+.login_status {
+    margin: 12px 0 8px;
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: var(--color-text-muted);
+}
+
+.login_button {
+    background: linear-gradient(135deg, var(--color-accent), #6d28d9);
+    border: none;
+    color: white;
+    padding: 9px 20px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    border-radius: 8px;
+    transition: opacity 0.15s ease, transform 0.1s ease;
+    min-width: 90px;
+    letter-spacing: 0.3px;
+}
+
+.login_button:hover {
+    opacity: 0.85;
+    transform: translateY(-1px);
+}
+
+input[type="text"] {
+    background: var(--bg-panel);
+    border: 2px solid var(--border-color);
+    border-radius: 8px;
+    color: var(--color-text);
+    padding: 9px 13px;
+    font-size: 14px;
+    margin-right: 8px;
+    transition: border-color 0.15s ease;
+    vertical-align: middle;
+}
+
+input[type="text"]:focus {
+    outline: none;
+    border-color: var(--color-accent-light);
+}
+
+input[type="text"]::placeholder {
+    color: var(--color-text-muted);
+}
+
+/* ===== SCOREBOARD ===== */
+
+.scoreboard {
+    background: var(--bg-panel);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 20px;
+    margin: 0;
+    font-size: 1rem;
+    font-weight: normal;
+    min-width: 200px;
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.4);
+}
+
+.scoreboard > div {
+    display: block !important;
+}
+
+.scoreboard h2 {
+    font-size: 1rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--color-accent-light);
+    margin-bottom: 14px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.scoreboard ol {
+    margin: 0;
+    padding-left: 22px;
+}
+
+.scoreboard ol li {
+    padding: 5px 0;
+    font-size: 0.9rem;
+    color: var(--color-text-muted);
+    border-bottom: 1px solid rgba(255,255,255,0.04);
+}
+
+.scoreboard ol li:last-child {
+    border-bottom: none;
+}
+
+.scoreboard .login_button {
+    width: 100%;
+    margin-bottom: 4px;
+    background: linear-gradient(135deg, #065f46, #047857);
+}
+
+.scoreboard .login_button:hover {
+    opacity: 0.85;
 }
